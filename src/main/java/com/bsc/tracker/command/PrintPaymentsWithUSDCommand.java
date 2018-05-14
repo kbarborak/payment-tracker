@@ -6,11 +6,11 @@ import com.bsc.tracker.PaymentStore;
 
 import java.util.Optional;
 
-public class PrintPaymentsWithUsdCommand extends PrintPaymentsCommand {
+public class PrintPaymentsWithUSDCommand extends PrintPaymentsCommand {
 
     private ExchangeConverter converter;
 
-    public PrintPaymentsWithUsdCommand(PaymentStore store, ExchangeConverter converter) {
+    public PrintPaymentsWithUSDCommand(PaymentStore store, ExchangeConverter converter) {
         super(store);
         this.converter = converter;
     }
@@ -18,7 +18,7 @@ public class PrintPaymentsWithUsdCommand extends PrintPaymentsCommand {
     @Override
     public String formatPayment(Payment payment) {
         StringBuilder formatted = new StringBuilder();
-        Optional<Payment> usdPayment = converter.convertToUsd(payment);
+        Optional<Payment> usdPayment = converter.convertToUSD(payment);
 
         formatted.append(payment.toString());
 

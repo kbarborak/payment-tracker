@@ -30,4 +30,4 @@ Probably building process works with Java 1.8+ but I cannot guarantee it right n
 * If there is an error in file being loaded, nothing is saved to in-memory payment storage.
 * Application accepts minor currency unit (e.g. USD 20.30).
 * All commands are case-sensitive (currency codes must be upper case, quit command lower case).
-* Exchange rate conversion works only against set of well known currencies. It could be a little bit inaccurate because of conversion to CZK (ČNB rates fetched on 13.5.2018.) and then to USD.
+* Informational USD conversion works only against set of well known currencies.

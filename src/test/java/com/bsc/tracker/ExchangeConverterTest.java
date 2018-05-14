@@ -12,15 +12,15 @@ class ExchangeConverterTest {
     @Test
     void shouldReturnExchangePaymentTest() {
         Payment eur = new Payment("EUR 20");
-        Optional<Payment> usd = new ExchangeConverter().convertToUsd(eur);
+        Optional<Payment> usd = new ExchangeConverter().convertToUSD(eur);
 
-        assertEquals(new Payment("USD 23.87"), usd.get());
+        assertEquals(new Payment("USD 23.92"), usd.get());
     }
 
     @Test
     void shouldReturnExchangePayment2Test() {
         Payment eur = new Payment("CNY 20");
-        Optional<Payment> usd = new ExchangeConverter().convertToUsd(eur);
+        Optional<Payment> usd = new ExchangeConverter().convertToUSD(eur);
 
         assertEquals(new Payment("USD 3.16"), usd.get());
     }
@@ -28,15 +28,15 @@ class ExchangeConverterTest {
     @Test
     void shouldNotConvertUsdTest() {
         Payment eur = new Payment("USD 23.28");
-        Optional<Payment> usd = new ExchangeConverter().convertToUsd(eur);
+        Optional<Payment> usd = new ExchangeConverter().convertToUSD(eur);
 
-        assertEquals(new Payment("USD 23.28"), usd.get());
+        assertFalse(usd.isPresent());
     }
 
     @Test
     void shouldReturnEmptyOptionalForCurrencyWithoutRateTest() {
         Payment eur = new Payment("BWP 23.28");
-        Optional<Payment> usd = new ExchangeConverter().convertToUsd(eur);
+        Optional<Payment> usd = new ExchangeConverter().convertToUSD(eur);
 
         assertFalse(usd.isPresent());
     }

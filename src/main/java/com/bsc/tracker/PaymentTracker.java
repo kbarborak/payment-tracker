@@ -38,7 +38,7 @@ public class PaymentTracker {
 
     private static void setUpBackgroundTasks(PaymentStore store) {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        executor.scheduleAtFixedRate(new PrintPaymentsWithUsdCommand(store, new ExchangeConverter()), 1L, 1L, TimeUnit.MINUTES);
+        executor.scheduleAtFixedRate(new PrintPaymentsWithUSDCommand(store, new ExchangeConverter()), 1L, 1L, TimeUnit.MINUTES);
     }
 
     private static void run(CommandExecutor executor, PaymentStore store) {

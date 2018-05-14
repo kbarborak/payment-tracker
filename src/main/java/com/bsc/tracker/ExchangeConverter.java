@@ -17,20 +17,13 @@ public class ExchangeConverter {
      * @param payment
      * @return
      */
-    public Optional<Payment> convertToUsd(Payment payment) {
-        if (!ExchangeRate.findExchangeRate(payment.getCurrency()).isPresent()) {
+    public Optional<Payment> convertToUSD(Payment payment) {
+        if (!ExchangeRateUSD.findRate(payment.getCurrency()).isPresent()) {
             return Optional.empty();
         }
 
-        if (payment.getCurrency().equals("USD")) {
-            return Optional.of(payment);
-        }
+        BigDecimal usdRate = ExchangeRateUSD.findRate(payment.getCurrency()).get();
 
-        BigDecimal rateToCzk = ExchangeRate.findExchangeRate(payment.getCurrency()).get();
-        Payment czk = payment.convert(CurrencyUnit.getInstance("CZK"), rateToCzk);
-
-        BigDecimal czkToUsdRate = new BigDecimal("1").divide(ExchangeRate.USD.getExchangeRate(), 4, RoundingMode.HALF_DOWN);
-
-        return Optional.of(czk.convert(CurrencyUnit.USD, czkToUsdRate));
+        return Optional.of(payment.convert(CurrencyUnit.USD, usdRate));
     }
 }

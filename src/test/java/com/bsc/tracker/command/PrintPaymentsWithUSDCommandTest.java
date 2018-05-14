@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class PrintPaymentsWithUsdCommandTest {
+class PrintPaymentsWithUSDCommandTest {
 
     private ByteArrayOutputStream stream;
     private PrintWriter writer;
@@ -24,7 +24,7 @@ class PrintPaymentsWithUsdCommandTest {
         stream = new ByteArrayOutputStream();
         writer = new PrintWriter(stream);
         store = new PaymentStore();
-        command = new PrintPaymentsWithUsdCommand(store, new ExchangeConverter());
+        command = new PrintPaymentsWithUSDCommand(store, new ExchangeConverter());
     }
 
     @Test
@@ -63,7 +63,7 @@ class PrintPaymentsWithUsdCommandTest {
         command.execute(null, writer);
         writer.flush();
 
-        assertEquals("\nPayments summary\n----------------\nCZK 10 (USD 0.47)\nEUR 20 (USD 23.87)\n\n", stream.toString());
+        assertEquals("\nPayments summary\n----------------\nCZK 10 (USD 0.47)\nEUR 20 (USD 23.92)\n\n", stream.toString());
     }
 
     @Test
